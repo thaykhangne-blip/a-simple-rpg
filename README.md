@@ -1,3 +1,24 @@
+## Refactor notes
+
+The legacy `script.js` has been separated into ordered files under `src/`:
+
+- `state.js`: shared state, cached DOM references, and startup listeners
+- `character-progression.js`: character switching, reset, and leveling
+- `help-commands.js`: help text and command input
+- `support-healing.js`: support and healing abilities
+- `combat.js`: magic casting, combat calculations, effects, and turn resolution
+- `ui-overlays.js`: menu, settings, shop, log, and popup controls
+- `class-skills.js`: class-specific skills
+- `ui-layout.js`: notifications and responsive scaling
+
+The files are loaded as **ordered classic scripts**, not ES modules. This is intentional for the first refactor pass: the original game relies on shared top-level variables and inline HTML event handlers. Keeping that runtime contract avoids introducing a large set of unrelated gameplay changes. No gameplay formulas or balance values were intentionally changed.
+
+## Running locally
+
+Open `index.html` through a local static web server, or use the existing GitHub Pages deployment. No build step or package installation is required.
+
+---
+
 ## Welcome to my small project
 
 Live preview: [[click here]](https://thaykhangne.github.io/a-simple-rpg/)
